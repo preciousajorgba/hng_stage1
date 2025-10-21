@@ -6,8 +6,17 @@ from datetime import datetime
 import hashlib
 import re
 from collections import Counter
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="String Analyzer API (Beginner-Friendly)", version="1.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Or use specific origins like ["http://localhost:8000"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # -------------------------------------------------------------------
 # 🧠 In-memory database (like a temporary storage)
